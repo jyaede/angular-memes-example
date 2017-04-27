@@ -1,3 +1,37 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <h2>Choose an Image</h2>
+            <div class="card-columns">
+                <div class="card" *ngFor="let a of available">
+                    <img class="card-img-top img-fluid" [src]="a.url" [alt]="a.name">
+                    <div class="card-block">
+                        <h4 class="card-title">{{a.name}}</h4>
+                        <button (click)="createModal(a)" class="btn btn-primary">Create Meme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <h2 class="text-center">My Collection</h2>
+            <div class="card mb-3" *ngFor="let c of collection">
+                <div class="card-block">
+                    <div class="row d-flex align-items-center">
+                        <div class="col-lg-6">
+                            <a [href]="c.image_url" data-lightbox="image-1" data-title="">
+                                <img [src]="c.image_url" class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="col-lg-6">
+                            Created - {{c.created | date: 'MMMM dd, yyyy h:mm a'}}
+                            <br>
+                            <br>
+                            <a class="btn btn-info" target="_blank" [href]="c.page_url">View Page</a>
+                            <button class="btn btn-danger" (click)="delete(c)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

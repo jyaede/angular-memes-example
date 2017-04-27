@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h4 class="modal-title">Create Meme - {{meme.name}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<div class="modal-body">
+    <img [src]="meme.url" class="img-fluid pb-3">
+    <input type="text" [(ngModel)]="topText" class="form-control" placeholder="Top Text">
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+        <input type="text" [(ngModel)]="bottomText" class="form-control" placeholder="Bottom Text">
+    </div>
+    <p class="text-danger">{{error}}</p>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="create()">Create</button>
+</div>
